@@ -1,0 +1,1047 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NBT_ProductionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NBT_Production.dbo.Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="StaffID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Areas" />
+          </Key>
+          <Property Name="StaffID" Type="nchar" MaxLength="8" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Areas" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IntakeYear">
+          <Key>
+            <PropertyRef Name="yearID" />
+          </Key>
+          <Property Name="yearID" Type="int" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="yearStart" Type="date" Nullable="false" />
+          <Property Name="yearEnd" Type="date" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TestVenues">
+          <Key>
+            <PropertyRef Name="VenueCode" />
+          </Key>
+          <Property Name="VenueCode" Type="int" Nullable="false" />
+          <Property Name="VenueName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="WebsiteName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Room" Type="nvarchar" MaxLength="255" />
+          <Property Name="VenueType" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProvinceID" Type="int" Nullable="false" />
+          <Property Name="Capacity" Type="int" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="255" />
+          <Property Name="Available" Type="bit" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="RowGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+          <Property Name="Place" Type="geography" />
+        </EntityType>
+        <EntityType Name="Classification">
+          <Key>
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="ClassID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Classification" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactMethod" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ISO" />
+          </Key>
+          <Property Name="ISO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nationality" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ISO_2Alpha" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="ISO_3Alpha" Type="nchar" MaxLength="3" />
+          <Property Name="ITU_Calling" Type="int" />
+          <Property Name="Flag" Type="image" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDType" Type="int" Nullable="false" />
+          <Property Name="ID_Passport" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="TitleID" Type="int" Nullable="false" />
+          <Property Name="Surname" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="Names" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="GenderID" Type="int" Nullable="false" />
+          <Property Name="DOB" Type="date" Nullable="false" />
+          <Property Name="NationalityID" Type="int" Nullable="false" />
+          <Property Name="ClassID" Type="int" Nullable="false" />
+          <Property Name="ContactID" Type="int" />
+          <Property Name="FirstPaymentDate" Type="date" />
+          <Property Name="CurrentEmployee" Type="bit" Nullable="false" />
+          <Property Name="RowGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gender" Type="nchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IDType">
+          <Key>
+            <PropertyRef Name="IDType" />
+          </Key>
+          <Property Name="IDType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NBTAttendance">
+          <Key>
+            <PropertyRef Name="AttendanceID" />
+          </Key>
+          <Property Name="AttendanceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="NBTStaffPayments">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StaffID" Type="int" Nullable="false" />
+          <Property Name="PositionID" Type="int" Nullable="false" />
+          <Property Name="AttendanceID" Type="int" Nullable="false" />
+          <Property Name="DOT" Type="date" Nullable="false" />
+          <Property Name="VenueCode" Type="int" Nullable="false" />
+          <Property Name="DaysHours" Type="int" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+          <Property Name="RowGUID" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NBTStaffPositions">
+          <Key>
+            <PropertyRef Name="PostID" />
+          </Key>
+          <Property Name="PostID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Position" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NBTStaffRates">
+          <Key>
+            <PropertyRef Name="AttendanceID" />
+            <PropertyRef Name="PositionID" />
+          </Key>
+          <Property Name="AttendanceID" Type="int" Nullable="false" />
+          <Property Name="PositionID" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="smallmoney" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegisteredEmployee">
+          <Key>
+            <PropertyRef Name="StaffID" />
+          </Key>
+          <Property Name="StaffID" Type="int" Nullable="false" />
+          <Property Name="TaxRefNo" Type="bigint" Nullable="false" />
+          <Property Name="VenueCode" Type="int" Nullable="false" />
+          <Property Name="IntakeYrID" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="RowGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StaffContactDetails">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactID" Type="int" Nullable="false" />
+          <Property Name="ContactDetails" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Datemodified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Title">
+          <Key>
+            <PropertyRef Name="IDType" />
+          </Key>
+          <Property Name="IDType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Employee_Classification">
+          <End Role="Classification" Type="Self.Classification" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classification">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_ContactType">
+          <End Role="ContactType" Type="Self.ContactType" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_IDType">
+          <End Role="IDType" Type="Self.IDType" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IDType">
+              <PropertyRef Name="IDType" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IDType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Title">
+          <End Role="Title" Type="Self.Title" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Title">
+              <PropertyRef Name="IDType" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="TitleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NBTStaffPayments_NBTAttendance1">
+          <End Role="NBTAttendance" Type="Self.NBTAttendance" Multiplicity="1" />
+          <End Role="NBTStaffPayments" Type="Self.NBTStaffPayments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NBTAttendance">
+              <PropertyRef Name="AttendanceID" />
+            </Principal>
+            <Dependent Role="NBTStaffPayments">
+              <PropertyRef Name="AttendanceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NBTStaffPayments_NBTStaffPositions">
+          <End Role="NBTStaffPositions" Type="Self.NBTStaffPositions" Multiplicity="1" />
+          <End Role="NBTStaffPayments" Type="Self.NBTStaffPayments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NBTStaffPositions">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="NBTStaffPayments">
+              <PropertyRef Name="PositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NBTStaffPayments_RegisteredEmployee">
+          <End Role="RegisteredEmployee" Type="Self.RegisteredEmployee" Multiplicity="1" />
+          <End Role="NBTStaffPayments" Type="Self.NBTStaffPayments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegisteredEmployee">
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="NBTStaffPayments">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NBTStaffPayments_TestVenues">
+          <End Role="TestVenues" Type="Self.TestVenues" Multiplicity="1" />
+          <End Role="NBTStaffPayments" Type="Self.NBTStaffPayments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestVenues">
+              <PropertyRef Name="VenueCode" />
+            </Principal>
+            <Dependent Role="NBTStaffPayments">
+              <PropertyRef Name="VenueCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NBTStaffRates_NBTAttendance">
+          <End Role="NBTAttendance" Type="Self.NBTAttendance" Multiplicity="1" />
+          <End Role="NBTStaffRates" Type="Self.NBTStaffRates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NBTAttendance">
+              <PropertyRef Name="AttendanceID" />
+            </Principal>
+            <Dependent Role="NBTStaffRates">
+              <PropertyRef Name="AttendanceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegisteredEmployee_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="RegisteredEmployee" Type="Self.RegisteredEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RegisteredEmployee">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegisteredEmployee_IntakeYear">
+          <End Role="IntakeYear" Type="Self.IntakeYear" Multiplicity="1" />
+          <End Role="RegisteredEmployee" Type="Self.RegisteredEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IntakeYear">
+              <PropertyRef Name="yearID" />
+            </Principal>
+            <Dependent Role="RegisteredEmployee">
+              <PropertyRef Name="IntakeYrID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffContactDetails_ContactType">
+          <End Role="ContactType" Type="Self.ContactType" Multiplicity="1" />
+          <End Role="StaffContactDetails" Type="Self.StaffContactDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StaffContactDetails">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NBT_ProductionModelStoreContainer">
+          <EntitySet Name="IntakeYear" EntityType="Self.IntakeYear" Schema="Process" store:Type="Tables" />
+          <EntitySet Name="TestVenues" EntityType="Self.TestVenues" Schema="Process" store:Type="Tables" />
+          <EntitySet Name="Classification" EntityType="Self.Classification" Schema="Staff" store:Type="Tables" />
+          <EntitySet Name="ContactType" EntityType="Self.ContactType" Schema="Staff" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="Staff" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="Staff" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="Staff" store:Type="Tables" />
+          <EntitySet Name="IDType" EntityType="Self.IDType" Schema="Staff" store:Type="Tables" />
+          <EntitySet Name="NBTAttendance" EntityType="Self.NBTAttendance" Schema="Staff" store:Type="Tables" />
+          <EntitySet Name="NBTStaffPayments" EntityType="Self.NBTStaffPayments" Schema="Staff" store:Type="Tables" />
+          <EntitySet Name="NBTStaffPositions" EntityType="Self.NBTStaffPositions" Schema="Staff" store:Type="Tables" />
+          <EntitySet Name="NBTStaffRates" EntityType="Self.NBTStaffRates" Schema="Staff" store:Type="Tables" />
+          <EntitySet Name="RegisteredEmployee" EntityType="Self.RegisteredEmployee" Schema="Staff" store:Type="Tables" />
+          <EntitySet Name="StaffContactDetails" EntityType="Self.StaffContactDetails" Schema="Staff" store:Type="Tables" />
+          <EntitySet Name="Title" EntityType="Self.Title" Schema="Staff" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Users].[StaffID] AS [StaffID], 
+    [Users].[Name] AS [Name], 
+    [Users].[Areas] AS [Areas]
+    FROM [dbo].[Users] AS [Users]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Employee_Classification" Association="Self.FK_Employee_Classification">
+            <End Role="Classification" EntitySet="Classification" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_ContactType" Association="Self.FK_Employee_ContactType">
+            <End Role="ContactType" EntitySet="ContactType" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Gender" Association="Self.FK_Employee_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_IDType" Association="Self.FK_Employee_IDType">
+            <End Role="IDType" EntitySet="IDType" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Title" Association="Self.FK_Employee_Title">
+            <End Role="Title" EntitySet="Title" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NBTStaffPayments_NBTAttendance1" Association="Self.FK_NBTStaffPayments_NBTAttendance1">
+            <End Role="NBTAttendance" EntitySet="NBTAttendance" />
+            <End Role="NBTStaffPayments" EntitySet="NBTStaffPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NBTStaffPayments_NBTStaffPositions" Association="Self.FK_NBTStaffPayments_NBTStaffPositions">
+            <End Role="NBTStaffPositions" EntitySet="NBTStaffPositions" />
+            <End Role="NBTStaffPayments" EntitySet="NBTStaffPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NBTStaffPayments_RegisteredEmployee" Association="Self.FK_NBTStaffPayments_RegisteredEmployee">
+            <End Role="RegisteredEmployee" EntitySet="RegisteredEmployee" />
+            <End Role="NBTStaffPayments" EntitySet="NBTStaffPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NBTStaffPayments_TestVenues" Association="Self.FK_NBTStaffPayments_TestVenues">
+            <End Role="TestVenues" EntitySet="TestVenues" />
+            <End Role="NBTStaffPayments" EntitySet="NBTStaffPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NBTStaffRates_NBTAttendance" Association="Self.FK_NBTStaffRates_NBTAttendance">
+            <End Role="NBTAttendance" EntitySet="NBTAttendance" />
+            <End Role="NBTStaffRates" EntitySet="NBTStaffRates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegisteredEmployee_Employee" Association="Self.FK_RegisteredEmployee_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="RegisteredEmployee" EntitySet="RegisteredEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegisteredEmployee_IntakeYear" Association="Self.FK_RegisteredEmployee_IntakeYear">
+            <End Role="IntakeYear" EntitySet="IntakeYear" />
+            <End Role="RegisteredEmployee" EntitySet="RegisteredEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffContactDetails_ContactType" Association="Self.FK_StaffContactDetails_ContactType">
+            <End Role="ContactType" EntitySet="ContactType" />
+            <End Role="StaffContactDetails" EntitySet="StaffContactDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NBT_ProductionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="IntakeYear">
+          <Key>
+            <PropertyRef Name="yearID" />
+          </Key>
+          <Property Name="yearID" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="yearStart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="yearEnd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="RegisteredEmployees" Relationship="Self.FK_RegisteredEmployee_IntakeYear" FromRole="IntakeYear" ToRole="RegisteredEmployee" />
+        </EntityType>
+        <EntityType Name="TestVenue">
+          <Key>
+            <PropertyRef Name="VenueCode" />
+          </Key>
+          <Property Name="VenueCode" Type="Int32" Nullable="false" />
+          <Property Name="VenueName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShortName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebsiteName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Room" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VenueType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ProvinceID" Type="Int32" Nullable="false" />
+          <Property Name="Capacity" Type="Int32" />
+          <Property Name="Comments" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Available" Type="Boolean" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="RowGuid" Type="Guid" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Place" Type="Geography" />
+          <NavigationProperty Name="NBTStaffPayments" Relationship="Self.FK_NBTStaffPayments_TestVenues" FromRole="TestVenues" ToRole="NBTStaffPayments" />
+        </EntityType>
+        <EntityType Name="Classification">
+          <Key>
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="ClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Classification1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Classification" FromRole="Classification" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="ContactType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactMethod" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_ContactType" FromRole="ContactType" ToRole="Employee" />
+          <NavigationProperty Name="StaffContactDetails" Relationship="Self.FK_StaffContactDetails_ContactType" FromRole="ContactType" ToRole="StaffContactDetails" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ISO" />
+          </Key>
+          <Property Name="ISO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nationality" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ISO_2Alpha" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ISO_3Alpha" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="ITU_Calling" Type="Int32" />
+          <Property Name="Flag" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDType" Type="Int32" Nullable="false" />
+          <Property Name="ID_Passport" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="TitleID" Type="Int32" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Names" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="GenderID" Type="Int32" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NationalityID" Type="Int32" Nullable="false" />
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <Property Name="ContactID" Type="Int32" />
+          <Property Name="FirstPaymentDate" Type="DateTime" Precision="0" />
+          <Property Name="CurrentEmployee" Type="Boolean" Nullable="false" />
+          <Property Name="RowGuid" Type="Guid" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Classification" Relationship="Self.FK_Employee_Classification" FromRole="Employee" ToRole="Classification" />
+          <NavigationProperty Name="ContactType" Relationship="Self.FK_Employee_ContactType" FromRole="Employee" ToRole="ContactType" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Employee_Gender" FromRole="Employee" ToRole="Gender" />
+          <NavigationProperty Name="IDType1" Relationship="Self.FK_Employee_IDType" FromRole="Employee" ToRole="IDType" />
+          <NavigationProperty Name="Title" Relationship="Self.FK_Employee_Title" FromRole="Employee" ToRole="Title" />
+          <NavigationProperty Name="RegisteredEmployees" Relationship="Self.FK_RegisteredEmployee_Employee" FromRole="Employee" ToRole="RegisteredEmployee" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gender1" Type="String" MaxLength="8" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Gender" FromRole="Gender" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="IDType">
+          <Key>
+            <PropertyRef Name="IDType1" />
+          </Key>
+          <Property Name="IDType1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_IDType" FromRole="IDType" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="NBTAttendance">
+          <Key>
+            <PropertyRef Name="AttendanceID" />
+          </Key>
+          <Property Name="AttendanceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="NBTStaffPayments" Relationship="Self.FK_NBTStaffPayments_NBTAttendance1" FromRole="NBTAttendance" ToRole="NBTStaffPayments" />
+          <NavigationProperty Name="NBTStaffRates" Relationship="Self.FK_NBTStaffRates_NBTAttendance" FromRole="NBTAttendance" ToRole="NBTStaffRates" />
+        </EntityType>
+        <EntityType Name="NBTStaffPayment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StaffID" Type="Int32" Nullable="false" />
+          <Property Name="PositionID" Type="Int32" Nullable="false" />
+          <Property Name="AttendanceID" Type="Int32" Nullable="false" />
+          <Property Name="DOT" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="VenueCode" Type="Int32" Nullable="false" />
+          <Property Name="DaysHours" Type="Int32" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RowGUID" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="TestVenue" Relationship="Self.FK_NBTStaffPayments_TestVenues" FromRole="NBTStaffPayments" ToRole="TestVenues" />
+          <NavigationProperty Name="NBTAttendance" Relationship="Self.FK_NBTStaffPayments_NBTAttendance1" FromRole="NBTStaffPayments" ToRole="NBTAttendance" />
+          <NavigationProperty Name="NBTStaffPosition" Relationship="Self.FK_NBTStaffPayments_NBTStaffPositions" FromRole="NBTStaffPayments" ToRole="NBTStaffPositions" />
+          <NavigationProperty Name="RegisteredEmployee" Relationship="Self.FK_NBTStaffPayments_RegisteredEmployee" FromRole="NBTStaffPayments" ToRole="RegisteredEmployee" />
+        </EntityType>
+        <EntityType Name="NBTStaffPosition">
+          <Key>
+            <PropertyRef Name="PostID" />
+          </Key>
+          <Property Name="PostID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Position" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="NBTStaffPayments" Relationship="Self.FK_NBTStaffPayments_NBTStaffPositions" FromRole="NBTStaffPositions" ToRole="NBTStaffPayments" />
+        </EntityType>
+        <EntityType Name="NBTStaffRate">
+          <Key>
+            <PropertyRef Name="AttendanceID" />
+            <PropertyRef Name="PositionID" />
+          </Key>
+          <Property Name="AttendanceID" Type="Int32" Nullable="false" />
+          <Property Name="PositionID" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="NBTAttendance" Relationship="Self.FK_NBTStaffRates_NBTAttendance" FromRole="NBTStaffRates" ToRole="NBTAttendance" />
+        </EntityType>
+        <EntityType Name="RegisteredEmployee">
+          <Key>
+            <PropertyRef Name="StaffID" />
+          </Key>
+          <Property Name="StaffID" Type="Int32" Nullable="false" />
+          <Property Name="TaxRefNo" Type="Int64" Nullable="false" />
+          <Property Name="VenueCode" Type="Int32" Nullable="false" />
+          <Property Name="IntakeYrID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="RowGuid" Type="Guid" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="IntakeYear" Relationship="Self.FK_RegisteredEmployee_IntakeYear" FromRole="RegisteredEmployee" ToRole="IntakeYear" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_RegisteredEmployee_Employee" FromRole="RegisteredEmployee" ToRole="Employee" />
+          <NavigationProperty Name="NBTStaffPayments" Relationship="Self.FK_NBTStaffPayments_RegisteredEmployee" FromRole="RegisteredEmployee" ToRole="NBTStaffPayments" />
+        </EntityType>
+        <EntityType Name="StaffContactDetail">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactID" Type="Int32" Nullable="false" />
+          <Property Name="ContactDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Datemodified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ContactType" Relationship="Self.FK_StaffContactDetails_ContactType" FromRole="StaffContactDetails" ToRole="ContactType" />
+        </EntityType>
+        <EntityType Name="Title">
+          <Key>
+            <PropertyRef Name="IDType" />
+          </Key>
+          <Property Name="IDType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Title" FromRole="Title" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="StaffID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Areas" />
+          </Key>
+          <Property Name="StaffID" Type="String" MaxLength="8" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Areas" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_RegisteredEmployee_IntakeYear">
+          <End Role="IntakeYear" Type="Self.IntakeYear" Multiplicity="1" />
+          <End Role="RegisteredEmployee" Type="Self.RegisteredEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IntakeYear">
+              <PropertyRef Name="yearID" />
+            </Principal>
+            <Dependent Role="RegisteredEmployee">
+              <PropertyRef Name="IntakeYrID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NBTStaffPayments_TestVenues">
+          <End Role="TestVenues" Type="Self.TestVenue" Multiplicity="1" />
+          <End Role="NBTStaffPayments" Type="Self.NBTStaffPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestVenues">
+              <PropertyRef Name="VenueCode" />
+            </Principal>
+            <Dependent Role="NBTStaffPayments">
+              <PropertyRef Name="VenueCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Classification">
+          <End Role="Classification" Type="Self.Classification" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classification">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_ContactType">
+          <End Role="ContactType" Type="Self.ContactType" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffContactDetails_ContactType">
+          <End Role="ContactType" Type="Self.ContactType" Multiplicity="1" />
+          <End Role="StaffContactDetails" Type="Self.StaffContactDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StaffContactDetails">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_IDType">
+          <End Role="IDType" Type="Self.IDType" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IDType">
+              <PropertyRef Name="IDType1" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IDType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Title">
+          <End Role="Title" Type="Self.Title" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Title">
+              <PropertyRef Name="IDType" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="TitleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegisteredEmployee_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="RegisteredEmployee" Type="Self.RegisteredEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RegisteredEmployee">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NBTStaffPayments_NBTAttendance1">
+          <End Role="NBTAttendance" Type="Self.NBTAttendance" Multiplicity="1" />
+          <End Role="NBTStaffPayments" Type="Self.NBTStaffPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NBTAttendance">
+              <PropertyRef Name="AttendanceID" />
+            </Principal>
+            <Dependent Role="NBTStaffPayments">
+              <PropertyRef Name="AttendanceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NBTStaffRates_NBTAttendance">
+          <End Role="NBTAttendance" Type="Self.NBTAttendance" Multiplicity="1" />
+          <End Role="NBTStaffRates" Type="Self.NBTStaffRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NBTAttendance">
+              <PropertyRef Name="AttendanceID" />
+            </Principal>
+            <Dependent Role="NBTStaffRates">
+              <PropertyRef Name="AttendanceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NBTStaffPayments_NBTStaffPositions">
+          <End Role="NBTStaffPositions" Type="Self.NBTStaffPosition" Multiplicity="1" />
+          <End Role="NBTStaffPayments" Type="Self.NBTStaffPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NBTStaffPositions">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="NBTStaffPayments">
+              <PropertyRef Name="PositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NBTStaffPayments_RegisteredEmployee">
+          <End Role="RegisteredEmployee" Type="Self.RegisteredEmployee" Multiplicity="1" />
+          <End Role="NBTStaffPayments" Type="Self.NBTStaffPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegisteredEmployee">
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="NBTStaffPayments">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NBT_ProductionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="IntakeYears" EntityType="Self.IntakeYear" />
+          <EntitySet Name="TestVenues" EntityType="Self.TestVenue" />
+          <EntitySet Name="Classifications" EntityType="Self.Classification" />
+          <EntitySet Name="ContactTypes" EntityType="Self.ContactType" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Genders" EntityType="Self.Gender" />
+          <EntitySet Name="IDTypes" EntityType="Self.IDType" />
+          <EntitySet Name="NBTAttendances" EntityType="Self.NBTAttendance" />
+          <EntitySet Name="NBTStaffPayments" EntityType="Self.NBTStaffPayment" />
+          <EntitySet Name="NBTStaffPositions" EntityType="Self.NBTStaffPosition" />
+          <EntitySet Name="NBTStaffRates" EntityType="Self.NBTStaffRate" />
+          <EntitySet Name="RegisteredEmployees" EntityType="Self.RegisteredEmployee" />
+          <EntitySet Name="StaffContactDetails" EntityType="Self.StaffContactDetail" />
+          <EntitySet Name="Titles" EntityType="Self.Title" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_RegisteredEmployee_IntakeYear" Association="Self.FK_RegisteredEmployee_IntakeYear">
+            <End Role="IntakeYear" EntitySet="IntakeYears" />
+            <End Role="RegisteredEmployee" EntitySet="RegisteredEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NBTStaffPayments_TestVenues" Association="Self.FK_NBTStaffPayments_TestVenues">
+            <End Role="TestVenues" EntitySet="TestVenues" />
+            <End Role="NBTStaffPayments" EntitySet="NBTStaffPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Classification" Association="Self.FK_Employee_Classification">
+            <End Role="Classification" EntitySet="Classifications" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_ContactType" Association="Self.FK_Employee_ContactType">
+            <End Role="ContactType" EntitySet="ContactTypes" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffContactDetails_ContactType" Association="Self.FK_StaffContactDetails_ContactType">
+            <End Role="ContactType" EntitySet="ContactTypes" />
+            <End Role="StaffContactDetails" EntitySet="StaffContactDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Gender" Association="Self.FK_Employee_Gender">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_IDType" Association="Self.FK_Employee_IDType">
+            <End Role="IDType" EntitySet="IDTypes" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Title" Association="Self.FK_Employee_Title">
+            <End Role="Title" EntitySet="Titles" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegisteredEmployee_Employee" Association="Self.FK_RegisteredEmployee_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="RegisteredEmployee" EntitySet="RegisteredEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NBTStaffPayments_NBTAttendance1" Association="Self.FK_NBTStaffPayments_NBTAttendance1">
+            <End Role="NBTAttendance" EntitySet="NBTAttendances" />
+            <End Role="NBTStaffPayments" EntitySet="NBTStaffPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NBTStaffRates_NBTAttendance" Association="Self.FK_NBTStaffRates_NBTAttendance">
+            <End Role="NBTAttendance" EntitySet="NBTAttendances" />
+            <End Role="NBTStaffRates" EntitySet="NBTStaffRates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NBTStaffPayments_NBTStaffPositions" Association="Self.FK_NBTStaffPayments_NBTStaffPositions">
+            <End Role="NBTStaffPositions" EntitySet="NBTStaffPositions" />
+            <End Role="NBTStaffPayments" EntitySet="NBTStaffPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NBTStaffPayments_RegisteredEmployee" Association="Self.FK_NBTStaffPayments_RegisteredEmployee">
+            <End Role="RegisteredEmployee" EntitySet="RegisteredEmployees" />
+            <End Role="NBTStaffPayments" EntitySet="NBTStaffPayments" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NBT_ProductionModelStoreContainer" CdmEntityContainer="NBT_ProductionEntities">
+          <EntitySetMapping Name="IntakeYears">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.IntakeYear">
+              <MappingFragment StoreEntitySet="IntakeYear">
+                <ScalarProperty Name="yearID" ColumnName="yearID" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="yearStart" ColumnName="yearStart" />
+                <ScalarProperty Name="yearEnd" ColumnName="yearEnd" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestVenues">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.TestVenue">
+              <MappingFragment StoreEntitySet="TestVenues">
+                <ScalarProperty Name="VenueCode" ColumnName="VenueCode" />
+                <ScalarProperty Name="VenueName" ColumnName="VenueName" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="WebsiteName" ColumnName="WebsiteName" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="VenueType" ColumnName="VenueType" />
+                <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Available" ColumnName="Available" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="RowGuid" ColumnName="RowGuid" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classifications">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.Classification">
+              <MappingFragment StoreEntitySet="Classification">
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="Classification1" ColumnName="Classification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactTypes">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.ContactType">
+              <MappingFragment StoreEntitySet="ContactType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ContactMethod" ColumnName="ContactMethod" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="ISO" ColumnName="ISO" />
+                <ScalarProperty Name="Country1" ColumnName="Country" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="ISO_2Alpha" ColumnName="ISO_2Alpha" />
+                <ScalarProperty Name="ISO_3Alpha" ColumnName="ISO_3Alpha" />
+                <ScalarProperty Name="ITU_Calling" ColumnName="ITU_Calling" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDType" ColumnName="IDType" />
+                <ScalarProperty Name="ID_Passport" ColumnName="ID_Passport" />
+                <ScalarProperty Name="TitleID" ColumnName="TitleID" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Names" ColumnName="Names" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="NationalityID" ColumnName="NationalityID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="FirstPaymentDate" ColumnName="FirstPaymentDate" />
+                <ScalarProperty Name="CurrentEmployee" ColumnName="CurrentEmployee" />
+                <ScalarProperty Name="RowGuid" ColumnName="RowGuid" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Gender1" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IDTypes">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.IDType">
+              <MappingFragment StoreEntitySet="IDType">
+                <ScalarProperty Name="IDType1" ColumnName="IDType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NBTAttendances">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.NBTAttendance">
+              <MappingFragment StoreEntitySet="NBTAttendance">
+                <ScalarProperty Name="AttendanceID" ColumnName="AttendanceID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NBTStaffPayments">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.NBTStaffPayment">
+              <MappingFragment StoreEntitySet="NBTStaffPayments">
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="AttendanceID" ColumnName="AttendanceID" />
+                <ScalarProperty Name="DOT" ColumnName="DOT" />
+                <ScalarProperty Name="VenueCode" ColumnName="VenueCode" />
+                <ScalarProperty Name="DaysHours" ColumnName="DaysHours" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="RowGUID" ColumnName="RowGUID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NBTStaffPositions">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.NBTStaffPosition">
+              <MappingFragment StoreEntitySet="NBTStaffPositions">
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NBTStaffRates">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.NBTStaffRate">
+              <MappingFragment StoreEntitySet="NBTStaffRates">
+                <ScalarProperty Name="AttendanceID" ColumnName="AttendanceID" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegisteredEmployees">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.RegisteredEmployee">
+              <MappingFragment StoreEntitySet="RegisteredEmployee">
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+                <ScalarProperty Name="TaxRefNo" ColumnName="TaxRefNo" />
+                <ScalarProperty Name="VenueCode" ColumnName="VenueCode" />
+                <ScalarProperty Name="IntakeYrID" ColumnName="IntakeYrID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="RowGuid" ColumnName="RowGuid" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffContactDetails">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.StaffContactDetail">
+              <MappingFragment StoreEntitySet="StaffContactDetails">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="ContactDetails" ColumnName="ContactDetails" />
+                <ScalarProperty Name="Datemodified" ColumnName="Datemodified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Titles">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.Title">
+              <MappingFragment StoreEntitySet="Title">
+                <ScalarProperty Name="IDType" ColumnName="IDType" />
+                <ScalarProperty Name="Title1" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Areas" ColumnName="Areas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
