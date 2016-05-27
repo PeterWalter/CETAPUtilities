@@ -169,9 +169,12 @@
     <Compile Include="Model\IDataService.cs" />
     <Compile Include="Model\Interfaces\IRepository.cs" />
     <Compile Include="Model\ModelBase.cs" />
+    <Compile Include="ViewModel\DirectoryViewModel.cs" />
+    <Compile Include="ViewModel\GenerateCompositeViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\SettingsAppearanceViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
+    <Compile Include="ViewModel\SubDomainsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\SettingsAppearanceView.xaml.cs">
       <DependentUpon>SettingsAppearanceView.xaml</DependentUpon>
