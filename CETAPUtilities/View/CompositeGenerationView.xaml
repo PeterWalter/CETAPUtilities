@@ -61,7 +61,9 @@
                       ItemsSource="{Binding Composite.Periods,
                                             Source={StaticResource Locator}}"
                       SelectedItem="{Binding Composite.SelectedPeriod,
-                                             Source={StaticResource Locator}}" SelectedValue="{Binding Composite.SelectedPeriod, Source={StaticResource Locator}}" />
+                                             Source={StaticResource Locator}}"
+                      SelectedValue="{Binding Composite.SelectedPeriod,
+                                              Source={StaticResource Locator}}" />
 
 
         </StackPanel>

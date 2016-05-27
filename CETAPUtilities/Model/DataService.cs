@@ -21,6 +21,28 @@ namespace CETAPUtilities.Model
         ObservableCollection<VenueBDO> AllVenues;
         ObservableCollection<CompositBDO> AllScores;
 
+        public List<UserBDO> GetAllUsers()
+        {
+            List<UserBDO> myUsers = new List<UserBDO>();
+               using (var context = new NBT_ProductionEntities())
+                    try
+                    {
+                        List<User> DbUsers = context.Users.Select(x => x).ToList();
+                        foreach (User person in DbUsers)
+                        {
+                            UserBDO M_User = new UserBDO();
+                            UserDALToUserBDO(M_User, person);
+                            myUsers.Add(M_User);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+            
+            return myUsers;
+        }
+
         public IntakeYear GetIntakeRecord(int year)
         {
             var myYear = new IntakeYear();
@@ -55,6 +77,13 @@ namespace CETAPUtilities.Model
             intakeBDO.yearStart = intakeDAL.yearStart;
             intakeBDO.yearEnd = intakeDAL.yearEnd;
             intakeBDO.DateModified = intakeDAL.DateModified;
+        }
+
+        static void UserDALToUserBDO(UserBDO userBDO, User user)
+        {
+           // userBDO.Areas = user.Areas;
+            userBDO.Name = user.Name;
+            userBDO.StaffID = user.StaffID;
         }
         #endregion
 

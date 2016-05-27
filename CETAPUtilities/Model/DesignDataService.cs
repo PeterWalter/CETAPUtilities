@@ -21,6 +21,11 @@ namespace CETAPUtilities.Model
             throw new NotImplementedException();
         }
 
+        public List<UserBDO> GetAllUsers()
+        {
+            throw new NotImplementedException();
+        }
+
         public IntakeYear GetIntakeRecord(int year)
         {
             throw new NotImplementedException();

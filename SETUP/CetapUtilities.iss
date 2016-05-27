@@ -3,7 +3,7 @@
 
 #define MyAppName "Cetap Utilities"
 #define MyAppVersion "0.0.1"
-#define MyAppPublisher "CETAP Dept."
+#define MyAppPublisher "CETAP, Dept."
 #define MyAppURL "http://www.example.com/"
 #define MyAppExeName "CETAPUtilities.exe"
 
@@ -11,7 +11,7 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{33299908-B88A-43FC-95BF-9E15262D6296}
+AppId={{76F37D2D-5E09-41DC-A3E0-4441B488A515}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -21,9 +21,9 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
-OutputDir=C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\SETUP
-OutputBaseFilename=Cetap Utilities setup
-SetupIconFile=C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\tool-kit-icon.ico
+OutputDir=D:\Programming Projects\CETAPUtilities\SETUP
+OutputBaseFilename=setup
+SetupIconFile=D:\Programming Projects\CETAPUtilities\CETAPUtilities\tool-kit-icon.ico
 Compression=lzma
 SolidCompression=yes
 
@@ -35,37 +35,36 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\CETAPUtilities.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\CETAPUtilities.exe.config"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\CETAPUtilities.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\CETAPUtilities.vshost.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\CETAPUtilities.vshost.exe.config"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\CETAPUtilities.vshost.exe.manifest"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\DocumentFormat.OpenXml.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\EntityFramework.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\EntityFramework.SqlServer.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\EntityFramework.SqlServer.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\EntityFramework.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\FirstFloor.ModernUI.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\FirstFloor.ModernUI.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\GalaSoft.MvvmLight.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\GalaSoft.MvvmLight.Extras.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\GalaSoft.MvvmLight.Extras.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\GalaSoft.MvvmLight.Extras.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\GalaSoft.MvvmLight.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\GalaSoft.MvvmLight.Platform.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\GalaSoft.MvvmLight.Platform.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\GalaSoft.MvvmLight.Platform.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\GalaSoft.MvvmLight.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\intake cycle Composite.xlsx"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\log4net.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\log4net.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\Microsoft.Practices.ServiceLocation.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\Microsoft.Practices.ServiceLocation.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\Microsoft.Practices.ServiceLocation.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\OpenXmlPowerTools.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\System.IO.Packaging.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\01376343.WF\OneDrive - University of Cape Town\Projects\Programming\CETAPUtilities\CETAPUtilities\CETAPUtilities\bin\Release\System.Windows.Interactivity.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\CETAPUtilities.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\CETAPUtilities.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\CETAPUtilities.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\CETAPUtilities.vshost.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\CETAPUtilities.vshost.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\CETAPUtilities.vshost.exe.manifest"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\DocumentFormat.OpenXml.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\EntityFramework.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\EntityFramework.SqlServer.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\EntityFramework.SqlServer.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\EntityFramework.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\FirstFloor.ModernUI.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\FirstFloor.ModernUI.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\GalaSoft.MvvmLight.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\GalaSoft.MvvmLight.Extras.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\GalaSoft.MvvmLight.Extras.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\GalaSoft.MvvmLight.Extras.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\GalaSoft.MvvmLight.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\GalaSoft.MvvmLight.Platform.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\GalaSoft.MvvmLight.Platform.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\GalaSoft.MvvmLight.Platform.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\GalaSoft.MvvmLight.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\log4net.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\log4net.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\Microsoft.Practices.ServiceLocation.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\Microsoft.Practices.ServiceLocation.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\Microsoft.Practices.ServiceLocation.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\OpenXmlPowerTools.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\System.IO.Packaging.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Programming Projects\CETAPUtilities\CETAPUtilities\bin\Release\System.Windows.Interactivity.dll"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

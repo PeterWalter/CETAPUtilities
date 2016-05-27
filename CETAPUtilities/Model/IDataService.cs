@@ -17,5 +17,6 @@ namespace CETAPUtilities.Model
         Task<bool> GetAllNBTScoresAsync(IntakeYear period);
         IntakeYear GetIntakeRecord(int year);
         List<IntakeYearsBDO> GetAllIntakeYears();
+        List<UserBDO> GetAllUsers();
     }
 }

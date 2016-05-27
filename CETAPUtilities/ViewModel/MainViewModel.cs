@@ -4,6 +4,7 @@ using CETAPUtilities.Model;
 using CETAPUtilities.BDO;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CETAPUtilities.ViewModel
 {
@@ -156,7 +157,7 @@ namespace CETAPUtilities.ViewModel
                 _service = Service;
                 string person = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
                 User = new UserBDO();
-                if (person == "WF\\01376343")
+                if (person == "WF\\01376340")
                 {
                     User.Name = "Admin";
                     //User.Areas = "012345-1234-1234-1234-1234-1234-1234";
@@ -164,8 +165,8 @@ namespace CETAPUtilities.ViewModel
                 else
                 {
                     List<UserBDO> persons = new List<UserBDO>();
-                    //persons = _service.GetAllUsers();
-                    //User = persons.Where(m => m.StaffID == person.Substring(3)).Select(v => v).FirstOrDefault();
+                    persons = _service.GetAllUsers();
+                    User = persons.Where(m => m.StaffID == person.Substring(3)).Select(v => v).FirstOrDefault();
 
                 }
                 InitializeModels();
