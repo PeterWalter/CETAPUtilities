@@ -60,19 +60,24 @@
                       FontSize="16"
                       ItemsSource="{Binding Composite.Periods,
                                             Source={StaticResource Locator}}"
-                      SelectedItem="{Binding Period.Year,
-                                             Mode=TwoWay}" />
+                      SelectedItem="{Binding Composite.SelectedPeriod,
+                                             Source={StaticResource Locator}}" SelectedValue="{Binding Composite.SelectedPeriod, Source={StaticResource Locator}}" />
+
 
         </StackPanel>
-        <StackPanel Visibility="{Binding Composite.IsLoaded, Converter={StaticResource BoolToVis}, FallbackValue=Collapsed, Source={StaticResource Locator}}">
+        <StackPanel Height="232.28"
+                    Margin="75,0,101,0"
+                    Visibility="{Binding Composite.IsLoaded,
+                                         Converter={StaticResource BoolToVis},
+                                         Source={StaticResource Locator}}">
             <Label Margin="10,10,0,0"
                    HorizontalContentAlignment="Center"
                    VerticalContentAlignment="Center"
                    Content="Loading Data ..."
                    FontSize="16" />
-            <mui:ModernProgressRing Width="200"
-                                    Height="200"
-                                    Margin="30,60,18,70"
+            <mui:ModernProgressRing Width="130"
+                                    Height="127"
+                                    Margin="10,10,10,0"
                                     IsActive="True" />
         </StackPanel>
 
