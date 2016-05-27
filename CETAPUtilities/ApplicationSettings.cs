@@ -8,78 +8,82 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CETAPUtilities {
-    
-    
+namespace CETAPUtilities
+{
+
+
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
-    internal sealed partial class ApplicationSettings : global::System.Configuration.ApplicationSettingsBase {
-        
+    internal sealed partial class ApplicationSettings : global::System.Configuration.ApplicationSettingsBase
+    {
+
         private static ApplicationSettings defaultInstance = ((ApplicationSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new ApplicationSettings())));
-        
-        public static ApplicationSettings Default {
-            get {
+
+        public static ApplicationSettings Default
+        {
+            get
+            {
                 return defaultInstance;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("#FF0000FF")]
-        public global::System.Windows.Media.Color SelectedAccentColor {
-            get {
+        public global::System.Windows.Media.Color SelectedAccentColor
+        {
+            get
+            {
                 return ((global::System.Windows.Media.Color)(this["SelectedAccentColor"]));
             }
-            set {
+            set
+            {
                 this["SelectedAccentColor"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("/FirstFloor.ModernUI;component/Assets/ModernUI.Dark.xaml")]
-        public global::System.Uri SelectedThemeSource {
-            get {
+        public global::System.Uri SelectedThemeSource
+        {
+            get
+            {
                 return ((global::System.Uri)(this["SelectedThemeSource"]));
             }
-            set {
+            set
+            {
                 this["SelectedThemeSource"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("dark")]
-        public string SelectedThemeDisplayName {
-            get {
+        public string SelectedThemeDisplayName
+        {
+            get
+            {
                 return ((string)(this["SelectedThemeDisplayName"]));
             }
-            set {
+            set
+            {
                 this["SelectedThemeDisplayName"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Large")]
-        public string SelectedFontSize {
-            get {
+        public string SelectedFontSize
+        {
+            get
+            {
                 return ((string)(this["SelectedFontSize"]));
             }
-            set {
+            set
+            {
                 this["SelectedFontSize"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("c:\\")]
-        public string CompositeFolder {
-            get {
-                return ((string)(this["CompositeFolder"]));
-            }
-            set {
-                this["CompositeFolder"] = value;
             }
         }
     }

@@ -12,15 +12,16 @@ namespace CETAPUtilities.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class Country
+    public partial class TestName
     {
-        public int ISO { get; set; }
-        public string Country1 { get; set; }
-        public string Nationality { get; set; }
-        public string ISO_2Alpha { get; set; }
-        public string ISO_3Alpha { get; set; }
-        public Nullable<int> ITU_Calling { get; set; }
-        public byte[] Flag { get; set; }
+        public int TestID { get; set; }
+        public string TestName1 { get; set; }
+        public int TestCode { get; set; }
+        public short Section7 { get; set; }
+        public bool HasErrors { get; set; }
+        public string Description { get; set; }
+        public System.Guid rowguid { get; set; }
         public System.DateTime DateModified { get; set; }
+        public byte[] RowVersion { get; set; }
     }
 }

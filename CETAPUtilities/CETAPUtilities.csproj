@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.0.5022.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\OpenXMLSDK-MOT.2.6.0.0\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -63,6 +67,9 @@
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="OpenXmlPowerTools">
+      <HintPath>..\packages\OpenXmlPowerTools.4.1.3\lib\OpenXmlPowerTools.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -70,6 +77,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -100,8 +108,20 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>ApplicationSettings.settings</DependentUpon>
     </Compile>
+    <Compile Include="BDO\CompositBDO.cs" />
+    <Compile Include="BDO\FullComposite.cs" />
+    <Compile Include="BDO\IntakeYearsBDO.cs" />
+    <Compile Include="BDO\LogisticsComposite.cs" />
+    <Compile Include="BDO\ProvinceBDO.cs" />
     <Compile Include="BDO\UserBDO.cs" />
+    <Compile Include="BDO\VenueBDO.cs" />
+    <Compile Include="Database\Batch.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\Classification.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Composit.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\ContactType.cs">
@@ -149,10 +169,16 @@
     <Compile Include="Database\NBTStaffRate.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\Province.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\RegisteredEmployee.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\StaffContactDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\TestName.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\TestVenue.cs">
@@ -164,8 +190,13 @@
     <Compile Include="Database\User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Helper\datFileAttributes.cs" />
+    <Compile Include="Helper\HelperUtils.cs" />
+    <Compile Include="Helper\LogHelper.cs" />
+    <Compile Include="Model\CompositeService.cs" />
     <Compile Include="Model\DataService.cs" />
     <Compile Include="Model\DesignDataService.cs" />
+    <Compile Include="Model\ICompositeService.cs" />
     <Compile Include="Model\IDataService.cs" />
     <Compile Include="Model\Interfaces\IRepository.cs" />
     <Compile Include="Model\ModelBase.cs" />
@@ -176,11 +207,26 @@
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\SubDomainsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\CompositeGenerationView.xaml.cs">
+      <DependentUpon>CompositeGenerationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CompositeView.xaml.cs">
+      <DependentUpon>CompositeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DirectoryView.xaml.cs">
+      <DependentUpon>DirectoryView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SettingsAppearanceView.xaml.cs">
       <DependentUpon>SettingsAppearanceView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SubdomainsView.xaml.cs">
+      <DependentUpon>SubdomainsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SubDomainView.xaml.cs">
+      <DependentUpon>SubDomainView.xaml</DependentUpon>
     </Compile>
     <Page Include="Assets\ModernUI.Theme1.xaml">
       <SubType>Designer</SubType>
@@ -195,6 +241,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Page Include="View\CompositeGenerationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\CompositeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DirectoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\SettingsAppearanceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -202,6 +260,14 @@
     <Page Include="View\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SubdomainsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\SubDomainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

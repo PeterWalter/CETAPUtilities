@@ -11,7 +11,7 @@ namespace CETAPUtilities.Database
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class IntakeYear
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,13 +19,13 @@ namespace CETAPUtilities.Database
         {
             this.RegisteredEmployees = new HashSet<RegisteredEmployee>();
         }
-
+    
         public int yearID { get; set; }
         public int Year { get; set; }
         public System.DateTime yearStart { get; set; }
         public System.DateTime yearEnd { get; set; }
         public System.DateTime DateModified { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RegisteredEmployee> RegisteredEmployees { get; set; }
     }

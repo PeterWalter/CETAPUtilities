@@ -11,7 +11,7 @@ namespace CETAPUtilities.Database
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class User
     {
         public string StaffID { get; set; }

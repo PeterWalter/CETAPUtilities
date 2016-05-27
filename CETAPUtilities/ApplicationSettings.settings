@@ -14,5 +14,8 @@
     <Setting Name="SelectedFontSize" Type="System.String" Scope="User">
       <Value Profile="(Default)">Large</Value>
     </Setting>
+    <Setting Name="CompositeFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">c:\</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

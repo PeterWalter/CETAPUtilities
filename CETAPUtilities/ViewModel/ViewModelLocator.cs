@@ -42,6 +42,7 @@ namespace CETAPUtilities.ViewModel
             {
                 // Create run time view services and models
                 SimpleIoc.Default.Register<IDataService, DataService>();
+                SimpleIoc.Default.Register<ICompositeService, CompositeService>();
             }
 
             SimpleIoc.Default.Register<MainViewModel>();

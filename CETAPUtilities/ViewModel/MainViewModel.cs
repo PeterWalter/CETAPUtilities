@@ -210,22 +210,22 @@ namespace CETAPUtilities.ViewModel
                 switch (i)
                 {
                     case 0: // The Group
-                        var First = new LinkGroup { DisplayName = "staff" };
+                        var First = new LinkGroup { DisplayName = "Utilities" };
                         string[] module = new string[] { "aaa", "b", "c", "d" };
                         foreach (var m in module)
                         {
                             switch (m)
                             {
                                 case "aaa":
-                                    Linkx = new Link { DisplayName = "The aaa", Source = new Uri("/View/CETAPView.xaml", UriKind.Relative) };
+                                    Linkx = new Link { DisplayName = "Composite", Source = new Uri("/View/CompositeView.xaml", UriKind.Relative) };
                                     First.Links.Add(Linkx);
                                     break;
                                 case "b":
-                                    Linkx = new Link { DisplayName = "The b", Source = new Uri("/View/CETAPView.xaml", UriKind.Relative) };
+                                    Linkx = new Link { DisplayName = "Subdomain", Source = new Uri("/View/SubdomainView.xaml", UriKind.Relative) };
                                     First.Links.Add(Linkx);
                                     break;
                                 case "c":
-                                    Linkx = new Link { DisplayName = "The c", Source = new Uri("/View/CETAPView.xaml", UriKind.Relative) };
+                                    Linkx = new Link { DisplayName = "Extras", Source = new Uri("/View/OtherView.xaml", UriKind.Relative) };
                                     First.Links.Add(Linkx);
                                     break;
 
@@ -234,30 +234,29 @@ namespace CETAPUtilities.ViewModel
                         this.MenuLinkGroups.Add(First);
                         break;
 
-                    case 1: // The Group
-                        var Second = new LinkGroup { DisplayName = "staff" };
-                        string[] module1 = new string[] { "aaa", "b", "c", "d" };
-                        foreach (var m in module1)
-                        {
-                            switch (m)
-                            {
-                                case "aaa":
-                                    Linkx = new Link { DisplayName = "The aaa", Source = new Uri("/View/CETAPView.xaml", UriKind.Relative) };
-                                    Second.Links.Add(Linkx);
-                                    break;
-                                case "b":
-                                    Linkx = new Link { DisplayName = "The b", Source = new Uri("/View/CETAPView.xaml", UriKind.Relative) };
-                                    Second.Links.Add(Linkx);
-                                    break;
-                                case "c":
-                                    Linkx = new Link { DisplayName = "The c", Source = new Uri("/View/CETAPView.xaml", UriKind.Relative) };
-                                    Second.Links.Add(Linkx);
-                                    break;
+                    //case 1: // The Group
+                    //    var Second = new LinkGroup { DisplayName = "Subdomains" };
+                    //    string[] module1 = new string[] { "aaa", "b", "c", "d" };
+                    //    foreach (var m in module1)
+                    //    {
+                    //        switch (m)
+                    //        {
+                    //            case "aaa":
+                    //                Linkx = new Link { DisplayName = "Clean Directory", Source = new Uri("/View/DirectoryView.xaml", UriKind.Relative) };
+                    //                Second.Links.Add(Linkx);
+                    //                break;
+                    //            case "b":
+                    //                Linkx = new Link { DisplayName = "Load Data", Source = new Uri("/View/SubdomainView.xaml", UriKind.Relative) };
+                    //                Second.Links.Add(Linkx);
+                    //                break;
+                          
 
-                            }
-                        }
-                        this.MenuLinkGroups.Add(Second);
-                        break;
+                    //        }
+                    //    }
+                    //    this.MenuLinkGroups.Add(Second);
+                    //    break;
+
+                  
                 }
             }
         }

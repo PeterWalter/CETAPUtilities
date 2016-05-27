@@ -11,14 +11,14 @@ namespace CETAPUtilities.Database
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class StaffContactDetail
     {
         public int EmployeeID { get; set; }
         public int ContactID { get; set; }
         public string ContactDetails { get; set; }
         public System.DateTime Datemodified { get; set; }
-
+    
         public virtual ContactType ContactType { get; set; }
     }
 }

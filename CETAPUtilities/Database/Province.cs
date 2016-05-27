@@ -12,22 +12,20 @@ namespace CETAPUtilities.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class ContactType
+    public partial class Province
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ContactType()
+        public Province()
         {
-            this.Employees = new HashSet<Employee>();
-            this.StaffContactDetails = new HashSet<StaffContactDetail>();
+            this.TestVenues = new HashSet<TestVenue>();
         }
     
-        public int ID { get; set; }
-        public string ContactMethod { get; set; }
-        public System.DateTime DateModified { get; set; }
+        public int Id { get; set; }
+        public byte[] RowVersion { get; set; }
+        public string Name { get; set; }
+        public int Code { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employees { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StaffContactDetail> StaffContactDetails { get; set; }
+        public virtual ICollection<TestVenue> TestVenues { get; set; }
     }
 }

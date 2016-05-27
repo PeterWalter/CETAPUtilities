@@ -4,7 +4,21 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NBT_ProductionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="NBT_ProductionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TestName">
+          <Key>
+            <PropertyRef Name="TestID" />
+          </Key>
+          <Property Name="TestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TestName" Type="nchar" MaxLength="14" Nullable="false" />
+          <Property Name="TestCode" Type="int" Nullable="false" />
+          <Property Name="Section7" Type="smallint" Nullable="false" />
+          <Property Name="HasErrors" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'NBT_Production.dbo.Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Users">
@@ -17,15 +31,84 @@ warning 6002: The table/view 'NBT_Production.dbo.Users' does not have a primary 
           <Property Name="Name" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="Areas" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Batch">
+          <Key>
+            <PropertyRef Name="BatchID" />
+          </Key>
+          <Property Name="BatchID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BatchName" Type="nchar" MaxLength="22" Nullable="false" />
+          <Property Name="TestDate" Type="date" Nullable="false" />
+          <Property Name="TestCombination" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="BatchedBy" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="BatchDate" Type="datetime" Nullable="false" />
+          <Property Name="RandTestNumber" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="TestVenueID" Type="int" Nullable="false" />
+          <Property Name="TestProfileID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Composit">
+          <Key>
+            <PropertyRef Name="Barcode" />
+          </Key>
+          <Property Name="RefNo" Type="bigint" Nullable="false" />
+          <Property Name="Barcode" Type="bigint" Nullable="false" />
+          <Property Name="Surname" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Initials" Type="nchar" MaxLength="3" />
+          <Property Name="SAID" Type="bigint" />
+          <Property Name="ForeignID" Type="nvarchar" MaxLength="20" />
+          <Property Name="DOB" Type="date" Nullable="false" />
+          <Property Name="ID_Type" Type="nchar" MaxLength="1" />
+          <Property Name="Citizenship" Type="int" />
+          <Property Name="Classification" Type="nchar" MaxLength="1" />
+          <Property Name="Gender" Type="nchar" MaxLength="1" />
+          <Property Name="Faculty" Type="nchar" MaxLength="50" />
+          <Property Name="DOT" Type="date" Nullable="false" />
+          <Property Name="VenueCode" Type="int" Nullable="false" />
+          <Property Name="VenueName" Type="nchar" MaxLength="100" />
+          <Property Name="HomeLanguage" Type="nchar" MaxLength="2" />
+          <Property Name="GR12Language" Type="nchar" MaxLength="1" />
+          <Property Name="AQLLanguage" Type="nchar" MaxLength="1" />
+          <Property Name="AQLCode" Type="int" />
+          <Property Name="MatLanguage" Type="nchar" MaxLength="1" />
+          <Property Name="MatCode" Type="int" />
+          <Property Name="ALScore" Type="int" />
+          <Property Name="ALLevel" Type="nvarchar" MaxLength="20" />
+          <Property Name="QLScore" Type="int" />
+          <Property Name="QLLevel" Type="nvarchar" MaxLength="20" />
+          <Property Name="MATScore" Type="int" />
+          <Property Name="MATLevel" Type="nvarchar" MaxLength="20" />
+          <Property Name="WroteAL" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="WroteQL" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="WroteMat" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="Faculty2" Type="nchar" MaxLength="50" />
+          <Property Name="Faculty3" Type="nchar" MaxLength="50" />
+          <Property Name="Batch" Type="nchar" MaxLength="22" Nullable="false" />
+          <Property Name="RowGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="IntakeYear">
           <Key>
             <PropertyRef Name="yearID" />
           </Key>
-          <Property Name="yearID" Type="int" Nullable="false" />
+          <Property Name="yearID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Year" Type="int" Nullable="false" />
           <Property Name="yearStart" Type="date" Nullable="false" />
           <Property Name="yearEnd" Type="date" Nullable="false" />
           <Property Name="DateModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Provinces">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TestVenues">
           <Key>
@@ -332,8 +415,24 @@ warning 6002: The table/view 'NBT_Production.dbo.Users' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TestVenues_Provinces">
+          <End Role="Provinces" Type="Self.Provinces" Multiplicity="1" />
+          <End Role="TestVenues" Type="Self.TestVenues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provinces">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestVenues">
+              <PropertyRef Name="ProvinceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="NBT_ProductionModelStoreContainer">
+          <EntitySet Name="TestName" EntityType="Self.TestName" Schema="ClusterAnalysis" store:Type="Tables" />
+          <EntitySet Name="Batch" EntityType="Self.Batch" Schema="Process" store:Type="Tables" />
+          <EntitySet Name="Composit" EntityType="Self.Composit" Schema="Process" store:Type="Tables" />
           <EntitySet Name="IntakeYear" EntityType="Self.IntakeYear" Schema="Process" store:Type="Tables" />
+          <EntitySet Name="Provinces" EntityType="Self.Provinces" Schema="Process" store:Type="Tables" />
           <EntitySet Name="TestVenues" EntityType="Self.TestVenues" Schema="Process" store:Type="Tables" />
           <EntitySet Name="Classification" EntityType="Self.Classification" Schema="Staff" store:Type="Tables" />
           <EntitySet Name="ContactType" EntityType="Self.ContactType" Schema="Staff" store:Type="Tables" />
@@ -407,9 +506,12 @@ warning 6002: The table/view 'NBT_Production.dbo.Users' does not have a primary 
             <End Role="ContactType" EntitySet="ContactType" />
             <End Role="StaffContactDetails" EntitySet="StaffContactDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_TestVenues_Provinces" Association="Self.FK_TestVenues_Provinces">
+            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="TestVenues" EntitySet="TestVenues" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NBT_ProductionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -443,6 +545,7 @@ warning 6002: The table/view 'NBT_Production.dbo.Users' does not have a primary 
           <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Place" Type="Geography" />
           <NavigationProperty Name="NBTStaffPayments" Relationship="Self.FK_NBTStaffPayments_TestVenues" FromRole="TestVenues" ToRole="NBTStaffPayments" />
+          <NavigationProperty Name="Province" Relationship="NBT_ProductionModel.FK_TestVenues_Provinces" FromRole="TestVenue" ToRole="Province" />
         </EntityType>
         <EntityType Name="Classification">
           <Key>
@@ -833,7 +936,111 @@ warning 6002: The table/view 'NBT_Production.dbo.Users' does not have a primary 
             <End Role="RegisteredEmployee" EntitySet="RegisteredEmployees" />
             <End Role="NBTStaffPayments" EntitySet="NBTStaffPayments" />
           </AssociationSet>
+          <EntitySet Name="TestNames" EntityType="NBT_ProductionModel.TestName" />
+          <EntitySet Name="Batches" EntityType="NBT_ProductionModel.Batch" />
+          <EntitySet Name="Composits" EntityType="NBT_ProductionModel.Composit" />
+          <EntitySet Name="Provinces" EntityType="NBT_ProductionModel.Province" />
+          <AssociationSet Name="FK_TestVenues_Provinces" Association="NBT_ProductionModel.FK_TestVenues_Provinces">
+            <End Role="Province" EntitySet="Provinces" />
+            <End Role="TestVenue" EntitySet="TestVenues" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="TestName">
+          <Key>
+            <PropertyRef Name="TestID" />
+          </Key>
+          <Property Name="TestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TestName1" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="true" />
+          <Property Name="TestCode" Type="Int32" Nullable="false" />
+          <Property Name="Section7" Type="Int16" Nullable="false" />
+          <Property Name="HasErrors" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="rowguid" Type="Guid" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Batch">
+          <Key>
+            <PropertyRef Name="BatchID" />
+          </Key>
+          <Property Name="BatchID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BatchName" Type="String" Nullable="false" MaxLength="22" FixedLength="true" Unicode="true" />
+          <Property Name="TestDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TestCombination" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="BatchedBy" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="BatchDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RandTestNumber" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="TestVenueID" Type="Int32" Nullable="false" />
+          <Property Name="TestProfileID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Composit">
+          <Key>
+            <PropertyRef Name="Barcode" />
+          </Key>
+          <Property Name="RefNo" Type="Int64" Nullable="false" />
+          <Property Name="Barcode" Type="Int64" Nullable="false" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Initials" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="SAID" Type="Int64" />
+          <Property Name="ForeignID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ID_Type" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Citizenship" Type="Int32" />
+          <Property Name="Classification" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Faculty" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="DOT" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="VenueCode" Type="Int32" Nullable="false" />
+          <Property Name="VenueName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="HomeLanguage" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="GR12Language" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="AQLLanguage" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="AQLCode" Type="Int32" />
+          <Property Name="MatLanguage" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="MatCode" Type="Int32" />
+          <Property Name="ALScore" Type="Int32" />
+          <Property Name="ALLevel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="QLScore" Type="Int32" />
+          <Property Name="QLLevel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MATScore" Type="Int32" />
+          <Property Name="MATLevel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WroteAL" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="WroteQL" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="WroteMat" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="Faculty2" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Faculty3" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Batch" Type="String" Nullable="false" MaxLength="22" FixedLength="true" Unicode="true" />
+          <Property Name="RowGuid" Type="Guid" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TestVenues" Relationship="NBT_ProductionModel.FK_TestVenues_Provinces" FromRole="Province" ToRole="TestVenue" />
+        </EntityType>
+        <Association Name="FK_TestVenues_Provinces">
+          <End Type="NBT_ProductionModel.Province" Role="Province" Multiplicity="1" />
+          <End Type="NBT_ProductionModel.TestVenue" Role="TestVenue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestVenue">
+              <PropertyRef Name="ProvinceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1018,6 +1225,93 @@ warning 6002: The table/view 'NBT_Production.dbo.Users' does not have a primary 
                 <ScalarProperty Name="StaffID" ColumnName="StaffID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Areas" ColumnName="Areas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestNames">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.TestName">
+              <MappingFragment StoreEntitySet="TestName">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="HasErrors" ColumnName="HasErrors" />
+                <ScalarProperty Name="Section7" ColumnName="Section7" />
+                <ScalarProperty Name="TestCode" ColumnName="TestCode" />
+                <ScalarProperty Name="TestName1" ColumnName="TestName" />
+                <ScalarProperty Name="TestID" ColumnName="TestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Batches">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.Batch">
+              <MappingFragment StoreEntitySet="Batch">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TestProfileID" ColumnName="TestProfileID" />
+                <ScalarProperty Name="TestVenueID" ColumnName="TestVenueID" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="RandTestNumber" ColumnName="RandTestNumber" />
+                <ScalarProperty Name="BatchDate" ColumnName="BatchDate" />
+                <ScalarProperty Name="BatchedBy" ColumnName="BatchedBy" />
+                <ScalarProperty Name="TestCombination" ColumnName="TestCombination" />
+                <ScalarProperty Name="TestDate" ColumnName="TestDate" />
+                <ScalarProperty Name="BatchName" ColumnName="BatchName" />
+                <ScalarProperty Name="BatchID" ColumnName="BatchID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Composits">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.Composit">
+              <MappingFragment StoreEntitySet="Composit">
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="RowGuid" ColumnName="RowGuid" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="Faculty3" ColumnName="Faculty3" />
+                <ScalarProperty Name="Faculty2" ColumnName="Faculty2" />
+                <ScalarProperty Name="WroteMat" ColumnName="WroteMat" />
+                <ScalarProperty Name="WroteQL" ColumnName="WroteQL" />
+                <ScalarProperty Name="WroteAL" ColumnName="WroteAL" />
+                <ScalarProperty Name="MATLevel" ColumnName="MATLevel" />
+                <ScalarProperty Name="MATScore" ColumnName="MATScore" />
+                <ScalarProperty Name="QLLevel" ColumnName="QLLevel" />
+                <ScalarProperty Name="QLScore" ColumnName="QLScore" />
+                <ScalarProperty Name="ALLevel" ColumnName="ALLevel" />
+                <ScalarProperty Name="ALScore" ColumnName="ALScore" />
+                <ScalarProperty Name="MatCode" ColumnName="MatCode" />
+                <ScalarProperty Name="MatLanguage" ColumnName="MatLanguage" />
+                <ScalarProperty Name="AQLCode" ColumnName="AQLCode" />
+                <ScalarProperty Name="AQLLanguage" ColumnName="AQLLanguage" />
+                <ScalarProperty Name="GR12Language" ColumnName="GR12Language" />
+                <ScalarProperty Name="HomeLanguage" ColumnName="HomeLanguage" />
+                <ScalarProperty Name="VenueName" ColumnName="VenueName" />
+                <ScalarProperty Name="VenueCode" ColumnName="VenueCode" />
+                <ScalarProperty Name="DOT" ColumnName="DOT" />
+                <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Classification" ColumnName="Classification" />
+                <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+                <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="ForeignID" ColumnName="ForeignID" />
+                <ScalarProperty Name="SAID" ColumnName="SAID" />
+                <ScalarProperty Name="Initials" ColumnName="Initials" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.Province">
+              <MappingFragment StoreEntitySet="Provinces">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

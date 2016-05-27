@@ -34,6 +34,11 @@
         <AssociationConnector Association="NBT_ProductionModel.FK_NBTStaffRates_NBTAttendance" ManuallyRouted="false" />
         <AssociationConnector Association="NBT_ProductionModel.FK_NBTStaffPayments_NBTStaffPositions" ManuallyRouted="false" />
         <AssociationConnector Association="NBT_ProductionModel.FK_NBTStaffPayments_RegisteredEmployee" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="NBT_ProductionModel.TestName" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="NBT_ProductionModel.Batch" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="NBT_ProductionModel.Composit" Width="1.5" PointX="10.375" PointY="5.75" />
+        <EntityTypeShape EntityType="NBT_ProductionModel.Province" Width="1.5" PointX="3" PointY="14.5" />
+        <AssociationConnector Association="NBT_ProductionModel.FK_TestVenues_Provinces" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

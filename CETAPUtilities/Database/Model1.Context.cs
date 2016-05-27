@@ -12,19 +12,19 @@ namespace CETAPUtilities.Database
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
+    
     public partial class NBT_ProductionEntities : DbContext
     {
         public NBT_ProductionEntities()
             : base("name=NBT_ProductionEntities")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<IntakeYear> IntakeYears { get; set; }
         public virtual DbSet<TestVenue> TestVenues { get; set; }
         public virtual DbSet<Classification> Classifications { get; set; }
@@ -41,5 +41,9 @@ namespace CETAPUtilities.Database
         public virtual DbSet<StaffContactDetail> StaffContactDetails { get; set; }
         public virtual DbSet<Title> Titles { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<TestName> TestNames { get; set; }
+        public virtual DbSet<Batch> Batches { get; set; }
+        public virtual DbSet<Composit> Composits { get; set; }
+        public virtual DbSet<Province> Provinces { get; set; }
     }
 }

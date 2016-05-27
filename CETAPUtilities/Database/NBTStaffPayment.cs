@@ -11,7 +11,7 @@ namespace CETAPUtilities.Database
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class NBTStaffPayment
     {
         public int PaymentID { get; set; }
@@ -23,7 +23,7 @@ namespace CETAPUtilities.Database
         public int DaysHours { get; set; }
         public System.DateTime DateModified { get; set; }
         public System.Guid RowGUID { get; set; }
-
+    
         public virtual TestVenue TestVenue { get; set; }
         public virtual NBTAttendance NBTAttendance { get; set; }
         public virtual NBTStaffPosition NBTStaffPosition { get; set; }

@@ -11,7 +11,7 @@ namespace CETAPUtilities.Database
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class TestVenue
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +19,7 @@ namespace CETAPUtilities.Database
         {
             this.NBTStaffPayments = new HashSet<NBTStaffPayment>();
         }
-
+    
         public int VenueCode { get; set; }
         public string VenueName { get; set; }
         public string ShortName { get; set; }
@@ -34,8 +34,9 @@ namespace CETAPUtilities.Database
         public System.Guid RowGuid { get; set; }
         public System.DateTime DateModified { get; set; }
         public System.Data.Entity.Spatial.DbGeography Place { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NBTStaffPayment> NBTStaffPayments { get; set; }
+        public virtual Province Province { get; set; }
     }
 }

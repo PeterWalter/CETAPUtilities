@@ -1,5 +1,7 @@
 ﻿using FirstFloor.ModernUI.Windows.Controls;
 using CETAPUtilities.ViewModel;
+using CETAPUtilities.Helper;
+
 
 namespace CETAPUtilities
 {
@@ -8,9 +10,13 @@ namespace CETAPUtilities
     /// </summary>
     public partial class MainWindow : ModernWindow
     {
+        private static readonly log4net.ILog log = LogHelper.GetLogger();
+        
         public MainWindow()
         {
+            
             InitializeComponent();
+            //log.Warn("Application started");
             SettingsAppearanceViewModel settings = new SettingsAppearanceViewModel();
 
             settings.SetThemeAndColor(ApplicationSettings.Default.SelectedThemeDisplayName,

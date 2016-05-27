@@ -281,6 +281,7 @@ namespace CETAPUtilities.ViewModel
                 //mruList.Add(path);
                 //Folder = path;
                 ApplicationSettings.Default.CompositeFolder = Folder;
+                ApplicationSettings.Default.Save();
             }
         }
 

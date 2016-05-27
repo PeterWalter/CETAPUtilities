@@ -11,14 +11,14 @@ namespace CETAPUtilities.Database
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class NBTStaffRate
     {
         public int AttendanceID { get; set; }
         public int PositionID { get; set; }
         public decimal Amount { get; set; }
         public System.DateTime DateModified { get; set; }
-
+    
         public virtual NBTAttendance NBTAttendance { get; set; }
     }
 }
