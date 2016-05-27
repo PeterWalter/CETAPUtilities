@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="CETAPUtilities.View.CompositeGenerationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ignore="http://www.galasoft.ch/ignore"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             d:DesignHeight="500"
+             d:DesignWidth="500"
+             mui:ModernFrame.KeepAlive="False"
+             BorderThickness="0,1,0,0"
+             DataContext="{Binding Composite,
+                                   Source={StaticResource Locator}}"
+             mc:Ignorable="d ignore">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </UserControl.Resources>
+    <UserControl.BorderBrush>
+        <SolidColorBrush Color="{Binding SettingsAppearance.SelectedAccentColor, Source={StaticResource Locator}}" />
+    </UserControl.BorderBrush>
+    <StackPanel>
+        <StackPanel Height="65.667" Orientation="Horizontal">
+            <mui:ModernButton Width="60"
+                              Height="60"
+                              Margin="0,2,0,0"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Top"
+                              Command="{Binding GenerateCompositeCommand,
+                                                Mode=OneWay}"
+                              EllipseDiameter="57"
+                              IconData="M0,15.033L21.333,15.033 18.265257,18.766 3.0663524,18.766z M3.0663526,5.3439998L8.0662584,5.3439998 8.0662584,9.6981144 13.265351,9.6981144 13.265351,5.3439998 18.265257,5.3439998 21.333,13.344 0,13.344z M10.666495,0L15.289001,3.853947 12.20043,3.853947 12.20043,8.6310003 9.1325703,8.6310003 9.1325703,3.853947 6.0439997,3.853947z"
+                              IconHeight="40"
+                              IconWidth="40"
+                              ToolTip="Generate Composite" />
+            <mui:ModernButton Width="60"
+                              Height="61"
+                              Margin="5,2,0,0"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Top"
+                              Command="{Binding GenerateLogisticsCompositeCommand,
+                                                Mode=OneWay}"
+                              EllipseDiameter="57"
+                              IconData="M8,17.200928L19,17.200928 19,20.200928 8,20.200928z M18,12.200928L22,12.200928 22,16.200928 18,16.200928z M15.3509,11.3366C14.9622,12.1829 14.4082,12.97 13.6882,13.6894 12.1237,15.2552 10.2377,16.0417 8.0313101,16.0417 7.4271202,16.0417 6.85425,15.9831 6.3001099,15.8671L6.3001099,21.6035 23.099701,21.6035 23.099701,11.3366z M6.3659973,4.5045166L8.6993122,4.5045166 8.6993122,8.2388992 11.498997,8.2388992 11.498997,10.570927 6.3659973,10.570927z M8.0305796,2.6450801C6.5430298,2.6450801 5.2695298,3.16992 4.21875,4.2200298 3.16925,5.2701998 2.6445301,6.5337501 2.6445301,8.0116596 2.6445301,9.4993296 3.16925,10.7727 4.21875,11.8216 5.2695298,12.873 6.5430298,13.3978 8.0313101,13.3978 9.50842,13.3978 10.7721,12.873 11.8229,11.8216 12.8719,10.7727 13.3965,9.4993296 13.3965,8.0116596 13.3965,6.5337501 12.8719,5.2701998 11.8229,4.2200298 10.7721,3.16992 9.50842,2.6450801 8.0313101,2.6450801z M8.0313101,0C10.2377,0 12.1237,0.787781 13.6882,2.3535202 15.254,3.91852 16.041599,5.8046899 16.041599,8.0116596 16.041599,8.1868296 16.041599,8.3613901 16.0313,8.5371103L25.8997,8.5371103 25.8997,24.403 3.4999998,24.403 3.4999998,14.662C3.1008899,14.3802 2.71222,14.0488 2.3528399,13.6894 0.78716993,12.1243 0,10.2285 0,8.0116596 0,5.8046899 0.78716993,3.91852 2.3528399,2.3535202 3.9179699,0.787781 5.8137798,0 8.0313101,0z"
+                              IconHeight="40"
+                              IconWidth="40"
+                              ToolTip="Generate Logistics Composite" />
+            <Label x:Name="label"
+                   Width="96"
+                   Height="23.626"
+                   Margin="5,0,0,0"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   Content="Intake Year"
+                   FontSize="16" />
+            <ComboBox Width="101"
+                      Height="26"
+                      Margin="0,20"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      FontSize="16"
+                      ItemsSource="{Binding Composite.Periods,
+                                            Source={StaticResource Locator}}"
+                      SelectedItem="{Binding Period.Year,
+                                             Mode=TwoWay}" />
+
+        </StackPanel>
+        <StackPanel Visibility="{Binding Composite.IsLoaded, Converter={StaticResource BoolToVis}, FallbackValue=Collapsed, Source={StaticResource Locator}}">
+            <Label Margin="10,10,0,0"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   Content="Loading Data ..."
+                   FontSize="16" />
+            <mui:ModernProgressRing Width="200"
+                                    Height="200"
+                                    Margin="30,60,18,70"
+                                    IsActive="True" />
+        </StackPanel>
+
+
+    </StackPanel>
+
+
+</UserControl>

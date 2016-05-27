@@ -47,6 +47,9 @@ namespace CETAPUtilities.ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<SettingsViewModel>();
             SimpleIoc.Default.Register<SettingsAppearanceViewModel>();
+            SimpleIoc.Default.Register<DirectoryViewModel>();
+            SimpleIoc.Default.Register<SubDomainsViewModel>();
+            SimpleIoc.Default.Register<GenerateCompositeViewModel>();
         }
 
         public MainViewModel Main
@@ -79,6 +82,54 @@ namespace CETAPUtilities.ViewModel
                 return ServiceLocator.Current.GetInstance<SettingsAppearanceViewModel>();
             }
         }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+         "CA1822:MarkMembersAsStatic",
+         Justification = "This non-static member is needed for data binding purposes.")]
+        public DirectoryViewModel Directory
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<DirectoryViewModel>();
+            }
+        }
+
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+         "CA1822:MarkMembersAsStatic",
+         Justification = "This non-static member is needed for data binding purposes.")]
+        public SubDomainsViewModel subdomains
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<SubDomainsViewModel>();
+            }
+        }
+
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+         "CA1822:MarkMembersAsStatic",
+         Justification = "This non-static member is needed for data binding purposes.")]
+        public GenerateCompositeViewModel Composite
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<GenerateCompositeViewModel>();
+            }
+        }
+
+
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+        // "CA1822:MarkMembersAsStatic",
+        // Justification = "This non-static member is needed for data binding purposes.")]
+        //public SettingsAppearanceViewModel SettingsAppearance
+        //{
+        //    get
+        //    {
+        //        return ServiceLocator.Current.GetInstance<SettingsAppearanceViewModel>();
+        //    }
+        //}
+
 
         public static void Cleanup()
         {
