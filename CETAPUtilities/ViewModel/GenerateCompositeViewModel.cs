@@ -263,8 +263,10 @@ namespace CETAPUtilities.ViewModel
         private async void LogisticsCompAsync()
         {
             Completed = false;
+            DataVisible = false;
             selectFolder();
             Completed = await _service.SaveLargeExcel2Async(Folder, Composite, _selectedPeriod);
+            DataVisible = true;
         }
         private void selectFolder()
         {
