@@ -404,6 +404,7 @@ namespace CETAPUtilities.Model
         public async Task<bool> SaveLargeExcelAsync(string folder, ObservableCollection<CompositBDO> composite, IntakeYearsBDO intake)
         {
             AllScores = composite;
+           
            // string path = Path.GetDirectoryName(folder);
             bool isgen = false;
             string n = " n = " + AllScores.Count() + ".xlsx";
@@ -425,6 +426,8 @@ namespace CETAPUtilities.Model
             //using (SpreadsheetDocument SpDoc = SpreadsheetDocument.Open(filename, true))
             //{
             await CompositToFullCompositeAsync();
+            composite.Clear();
+            AllScores.Clear();
             
             // column heading for excel
             string[] ColumnHeadings = new[] {
@@ -590,6 +593,8 @@ namespace CETAPUtilities.Model
 
             //generate a collection of Logistics objects
             await CompositToLogisticsCompositeAsync();
+            composite.Clear();
+            AllScores.Clear();
 
             // column heading for excel
             string[] ColumnHeadings = new[]
