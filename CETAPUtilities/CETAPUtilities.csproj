@@ -211,6 +211,7 @@
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\SubDomainsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="ViewModel\WriterUtilViewModel.cs" />
     <Compile Include="View\CompositeGenerationView.xaml.cs">
       <DependentUpon>CompositeGenerationView.xaml</DependentUpon>
     </Compile>
@@ -231,6 +232,9 @@
     </Compile>
     <Compile Include="View\SubDomainView.xaml.cs">
       <DependentUpon>SubDomainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WriterUtilView.xaml.cs">
+      <DependentUpon>WriterUtilView.xaml</DependentUpon>
     </Compile>
     <Page Include="Assets\ModernUI.Theme1.xaml">
       <SubType>Designer</SubType>
@@ -272,6 +276,10 @@
     <Page Include="View\SubDomainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\WriterUtilView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

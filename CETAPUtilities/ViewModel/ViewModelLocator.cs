@@ -51,6 +51,7 @@ namespace CETAPUtilities.ViewModel
             SimpleIoc.Default.Register<DirectoryViewModel>();
             SimpleIoc.Default.Register<SubDomainsViewModel>();
             SimpleIoc.Default.Register<GenerateCompositeViewModel>();
+            SimpleIoc.Default.Register<WriterUtilViewModel>();
         }
 
         public MainViewModel Main
@@ -119,6 +120,39 @@ namespace CETAPUtilities.ViewModel
             }
         }
 
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+         "CA1822:MarkMembersAsStatic",
+         Justification = "This non-static member is needed for data binding purposes.")]
+        public WriterUtilViewModel WriterUtil
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<WriterUtilViewModel>();
+            }
+        }
+
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+        // "CA1822:MarkMembersAsStatic",
+        // Justification = "This non-static member is needed for data binding purposes.")]
+        //public SettingsAppearanceViewModel SettingsAppearance
+        //{
+        //    get
+        //    {
+        //        return ServiceLocator.Current.GetInstance<SettingsAppearanceViewModel>();
+        //    }
+        //}
+
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+        // "CA1822:MarkMembersAsStatic",
+        // Justification = "This non-static member is needed for data binding purposes.")]
+        //public SettingsAppearanceViewModel SettingsAppearance
+        //{
+        //    get
+        //    {
+        //        return ServiceLocator.Current.GetInstance<SettingsAppearanceViewModel>();
+        //    }
+        //}
 
         //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
         // "CA1822:MarkMembersAsStatic",

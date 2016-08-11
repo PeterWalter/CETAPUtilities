@@ -13,7 +13,7 @@
             <mui:ModernTab.Links>
                 <!--  TODO: set @Source  -->
                 <mui:Link DisplayName="Composite Utilities" Source="/View/CompositeGenerationView.xaml" />
-                <mui:Link DisplayName="Writer Utilities" Source="/View/writersView.xaml" />
+                <mui:Link DisplayName="Writer Utilities" Source="/View/WriterUtilView.xaml" />
             </mui:ModernTab.Links>
         </mui:ModernTab>
     </Grid>
