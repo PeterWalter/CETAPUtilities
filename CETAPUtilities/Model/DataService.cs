@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-//using System.Text;
+using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Collections.ObjectModel;
 using CETAPUtilities.BDO;
-using DocumentFormat.OpenXml.Packaging;
 using OpenXmlPowerTools;
 using CETAPUtilities.Helper;
 using CETAPUtilities.Database;
 using System.Data.Entity;
-//using log4net.Config;
+using log4net.Config;
 
 namespace CETAPUtilities.Model
-{
-    public class DataService : IDataService
+	{
+	public class DataService : IDataService
     {
         static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         ObservableCollection<VenueBDO> AllVenues;
@@ -152,7 +151,7 @@ namespace CETAPUtilities.Model
                                  Mat_Lang = mydata.MatLanguage,
                                  mm = mydata.Batch,
                                  TestType = MytestType(mydata.Batch),                                 
-                                 province = getProvinceAsync(mydata.VenueCode)
+                                 province = getProvince(mydata.VenueCode)
 
                              });
 
@@ -188,7 +187,7 @@ namespace CETAPUtilities.Model
                     FC.AQLLanguage = a.AQL_Lang;
                     FC.MatLanguage = a.Mat_Lang;
                     FC.TestType = a.TestType;
-                    FC.VenueProvince = await a.province;
+                    FC.VenueProvince =  a.province;
                     //FC.RefNo = a.RefNo;
 
 
@@ -196,12 +195,12 @@ namespace CETAPUtilities.Model
                 }
             }
         }
-        private async Task<string> getProvinceAsync(int venuecode)
+        private string getProvince(int venuecode)
         {
-            VenueBDO venue = AllVenues.Where(x => x.VenueCode == venuecode).FirstOrDefault();
+            var venue = AllVenues.Where(x => x.VenueCode == venuecode).FirstOrDefault();
 
 
-            ProvinceBDO prov =  getProvinceByID(venue.ProvinceID);
+            var prov =  getProvinceByID(venue.ProvinceID);
             return prov.Name;
         }
         private string MytestType(string datfile)
