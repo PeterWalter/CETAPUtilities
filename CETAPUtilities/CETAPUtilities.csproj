@@ -196,13 +196,16 @@
     <Compile Include="Model\CompositeService.cs" />
     <Compile Include="Model\DataService.cs" />
     <Compile Include="Model\DesignDataService.cs" />
+    <Compile Include="Model\Enums.cs" />
     <Compile Include="Model\ICompositeService.cs" />
     <Compile Include="Model\IDataService.cs" />
+    <Compile Include="Model\InstitutionMatch.cs" />
     <Compile Include="Model\Interfaces\IRepository.cs" />
     <Compile Include="Model\ModelBase.cs" />
     <Compile Include="ViewModel\DirectoryViewModel.cs" />
     <Compile Include="ViewModel\GenerateCompositeViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\MatchScoresWizardViewModel.cs" />
     <Compile Include="ViewModel\SettingsAppearanceViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\SubDomainsViewModel.cs" />
@@ -283,7 +286,9 @@
     <None Include="Database\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
