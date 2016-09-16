@@ -14,6 +14,25 @@ namespace CETAPUtilities.Model
     {
         static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+		public async Task<ObservableCollection<InstitutionBDO>> GetAllInstitutions()
+		{
+			var Institutes = new ObservableCollection<InstitutionBDO>();
+			using (var context = new NBT_ProductionEntities())
+			{
+				var insts = await context.Institutions.ToListAsync();
+				if(insts != null)
+				{
+					foreach (var item in insts)
+						{
+							var Institute = new InstitutionBDO();
+							InstitutionDALToInstitutionBDO(item, Institute);
+							Institutes.Add(Institute);
+						}
+				}
+			}
+				return Institutes;
+		}
+
         public async Task<ObservableCollection<CompositBDO>> GetAllNBTScoresAsync(IntakeYearsBDO period)
         {
             var AllScores = new ObservableCollection<CompositBDO>();
@@ -49,7 +68,24 @@ namespace CETAPUtilities.Model
             intakeBDO.yearEnd = intakeDAL.yearEnd;
             intakeBDO.DateModified = intakeDAL.DateModified;
         }
-
+		static void InstitutionBDOToInstitutionDAL(Institution InstDAL, InstitutionBDO instBDO)
+		{
+			InstDAL.InstID = instBDO.InstID;
+			InstDAL.Name = instBDO.Name;
+			InstDAL.Description = instBDO.Description;
+			InstDAL.Logo = instBDO.Logo;
+			InstDAL.GUID = instBDO.GUID;
+			InstDAL.DateModified = instBDO.DateModified;
+			}
+		static void InstitutionDALToInstitutionBDO(Institution instDAL, InstitutionBDO instBDO)
+		{
+			instBDO.Name = instDAL.Name;
+			instBDO.InstID = instDAL.InstID;
+			instBDO.Logo = instDAL.Logo;
+			instBDO.GUID = instDAL.GUID;
+			instBDO.Description = instDAL.Description;
+			instBDO.DateModified = instDAL.DateModified;
+			}
         static void CompositDALToCompositBDO(CompositBDO compositBDO, Composit composit)
         {
             compositBDO.ALScore = composit.ALScore;

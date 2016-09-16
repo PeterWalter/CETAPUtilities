@@ -91,6 +91,30 @@ warning 6002: The table/view 'NBT_Production.dbo.Users' does not have a primary 
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="DateModified" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Institution">
+          <Key>
+            <PropertyRef Name="InstID" />
+          </Key>
+          <Property Name="InstID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nchar" MaxLength="500" />
+          <Property Name="Logo" Type="varbinary(max)" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InstitutionMatch">
+          <Key>
+            <PropertyRef Name="RequestNumber" />
+          </Key>
+          <Property Name="RequestNumber" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InstID" Type="int" Nullable="false" />
+          <Property Name="Barcode" Type="bigint" Nullable="false" />
+          <Property Name="StudentID" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Programme" Type="nchar" MaxLength="20" />
+          <Property Name="Faculty" Type="nchar" MaxLength="20" />
+          <Property Name="RequestDate" Type="date" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="IntakeYear">
           <Key>
             <PropertyRef Name="yearID" />
@@ -319,6 +343,30 @@ warning 6002: The table/view 'NBT_Production.dbo.Users' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_InstitutionMatch_Composit">
+          <End Role="Composit" Type="Self.Composit" Multiplicity="1" />
+          <End Role="InstitutionMatch" Type="Self.InstitutionMatch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Composit">
+              <PropertyRef Name="Barcode" />
+            </Principal>
+            <Dependent Role="InstitutionMatch">
+              <PropertyRef Name="Barcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InstitutionMatch_Institution">
+          <End Role="Institution" Type="Self.Institution" Multiplicity="1" />
+          <End Role="InstitutionMatch" Type="Self.InstitutionMatch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Institution">
+              <PropertyRef Name="InstID" />
+            </Principal>
+            <Dependent Role="InstitutionMatch">
+              <PropertyRef Name="InstID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_NBTStaffPayments_NBTAttendance1">
           <End Role="NBTAttendance" Type="Self.NBTAttendance" Multiplicity="1" />
           <End Role="NBTStaffPayments" Type="Self.NBTStaffPayments" Multiplicity="*" />
@@ -431,6 +479,8 @@ warning 6002: The table/view 'NBT_Production.dbo.Users' does not have a primary 
           <EntitySet Name="TestName" EntityType="Self.TestName" Schema="ClusterAnalysis" store:Type="Tables" />
           <EntitySet Name="Batch" EntityType="Self.Batch" Schema="Process" store:Type="Tables" />
           <EntitySet Name="Composit" EntityType="Self.Composit" Schema="Process" store:Type="Tables" />
+          <EntitySet Name="Institution" EntityType="Self.Institution" Schema="Process" store:Type="Tables" />
+          <EntitySet Name="InstitutionMatch" EntityType="Self.InstitutionMatch" Schema="Process" store:Type="Tables" />
           <EntitySet Name="IntakeYear" EntityType="Self.IntakeYear" Schema="Process" store:Type="Tables" />
           <EntitySet Name="Provinces" EntityType="Self.Provinces" Schema="Process" store:Type="Tables" />
           <EntitySet Name="TestVenues" EntityType="Self.TestVenues" Schema="Process" store:Type="Tables" />
@@ -473,6 +523,14 @@ warning 6002: The table/view 'NBT_Production.dbo.Users' does not have a primary 
           <AssociationSet Name="FK_Employee_Title" Association="Self.FK_Employee_Title">
             <End Role="Title" EntitySet="Title" />
             <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InstitutionMatch_Composit" Association="Self.FK_InstitutionMatch_Composit">
+            <End Role="Composit" EntitySet="Composit" />
+            <End Role="InstitutionMatch" EntitySet="InstitutionMatch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InstitutionMatch_Institution" Association="Self.FK_InstitutionMatch_Institution">
+            <End Role="Institution" EntitySet="Institution" />
+            <End Role="InstitutionMatch" EntitySet="InstitutionMatch" />
           </AssociationSet>
           <AssociationSet Name="FK_NBTStaffPayments_NBTAttendance1" Association="Self.FK_NBTStaffPayments_NBTAttendance1">
             <End Role="NBTAttendance" EntitySet="NBTAttendance" />
@@ -944,6 +1002,16 @@ warning 6002: The table/view 'NBT_Production.dbo.Users' does not have a primary 
             <End Role="Province" EntitySet="Provinces" />
             <End Role="TestVenue" EntitySet="TestVenues" />
           </AssociationSet>
+          <EntitySet Name="Institutions" EntityType="NBT_ProductionModel.Institution" />
+          <EntitySet Name="InstitutionMatches" EntityType="NBT_ProductionModel.InstitutionMatch" />
+          <AssociationSet Name="FK_InstitutionMatch_Composit" Association="NBT_ProductionModel.FK_InstitutionMatch_Composit">
+            <End Role="Composit" EntitySet="Composits" />
+            <End Role="InstitutionMatch" EntitySet="InstitutionMatches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InstitutionMatch_Institution" Association="NBT_ProductionModel.FK_InstitutionMatch_Institution">
+            <End Role="Institution" EntitySet="Institutions" />
+            <End Role="InstitutionMatch" EntitySet="InstitutionMatches" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="TestName">
           <Key>
@@ -1018,6 +1086,7 @@ warning 6002: The table/view 'NBT_Production.dbo.Users' does not have a primary 
           <Property Name="RowGuid" Type="Guid" Nullable="false" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="InstitutionMatches" Relationship="NBT_ProductionModel.FK_InstitutionMatch_Composit" FromRole="Composit" ToRole="InstitutionMatch" />
         </EntityType>
         <EntityType Name="Province">
           <Key>
@@ -1038,6 +1107,57 @@ warning 6002: The table/view 'NBT_Production.dbo.Users' does not have a primary 
             </Principal>
             <Dependent Role="TestVenue">
               <PropertyRef Name="ProvinceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Institution">
+          <Key>
+            <PropertyRef Name="InstID" />
+          </Key>
+          <Property Name="InstID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="InstitutionMatches" Relationship="NBT_ProductionModel.FK_InstitutionMatch_Institution" FromRole="Institution" ToRole="InstitutionMatch" />
+        </EntityType>
+        <EntityType Name="InstitutionMatch">
+          <Key>
+            <PropertyRef Name="RequestNumber" />
+          </Key>
+          <Property Name="RequestNumber" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstID" Type="Int32" Nullable="false" />
+          <Property Name="Barcode" Type="Int64" Nullable="false" />
+          <Property Name="StudentID" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Programme" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Faculty" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="RequestDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Composit" Relationship="NBT_ProductionModel.FK_InstitutionMatch_Composit" FromRole="InstitutionMatch" ToRole="Composit" />
+          <NavigationProperty Name="Institution" Relationship="NBT_ProductionModel.FK_InstitutionMatch_Institution" FromRole="InstitutionMatch" ToRole="Institution" />
+        </EntityType>
+        <Association Name="FK_InstitutionMatch_Composit">
+          <End Type="NBT_ProductionModel.Composit" Role="Composit" Multiplicity="1" />
+          <End Type="NBT_ProductionModel.InstitutionMatch" Role="InstitutionMatch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Composit">
+              <PropertyRef Name="Barcode" />
+            </Principal>
+            <Dependent Role="InstitutionMatch">
+              <PropertyRef Name="Barcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InstitutionMatch_Institution">
+          <End Type="NBT_ProductionModel.Institution" Role="Institution" Multiplicity="1" />
+          <End Type="NBT_ProductionModel.InstitutionMatch" Role="InstitutionMatch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Institution">
+              <PropertyRef Name="InstID" />
+            </Principal>
+            <Dependent Role="InstitutionMatch">
+              <PropertyRef Name="InstID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1312,6 +1432,32 @@ warning 6002: The table/view 'NBT_Production.dbo.Users' does not have a primary 
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Institutions">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.Institution">
+              <MappingFragment StoreEntitySet="Institution">
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="InstID" ColumnName="InstID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InstitutionMatches">
+            <EntityTypeMapping TypeName="NBT_ProductionModel.InstitutionMatch">
+              <MappingFragment StoreEntitySet="InstitutionMatch">
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+                <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+                <ScalarProperty Name="Programme" ColumnName="Programme" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="InstID" ColumnName="InstID" />
+                <ScalarProperty Name="RequestNumber" ColumnName="RequestNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -14,6 +14,12 @@ namespace CETAPUtilities.Database
     
     public partial class Composit
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Composit()
+        {
+            this.InstitutionMatches = new HashSet<InstitutionMatch>();
+        }
+    
         public long RefNo { get; set; }
         public long Barcode { get; set; }
         public string Surname { get; set; }
@@ -51,5 +57,8 @@ namespace CETAPUtilities.Database
         public System.Guid RowGuid { get; set; }
         public byte[] RowVersion { get; set; }
         public System.DateTime DateModified { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InstitutionMatch> InstitutionMatches { get; set; }
     }
 }

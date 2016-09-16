@@ -39,6 +39,10 @@
         <EntityTypeShape EntityType="NBT_ProductionModel.Composit" Width="1.5" PointX="10.375" PointY="5.75" />
         <EntityTypeShape EntityType="NBT_ProductionModel.Province" Width="1.5" PointX="3" PointY="14.5" />
         <AssociationConnector Association="NBT_ProductionModel.FK_TestVenues_Provinces" />
+        <EntityTypeShape EntityType="NBT_ProductionModel.Institution" Width="1.5" PointX="10.375" PointY="15.75" />
+        <EntityTypeShape EntityType="NBT_ProductionModel.InstitutionMatch" Width="1.5" PointX="12.625" PointY="8.5" />
+        <AssociationConnector Association="NBT_ProductionModel.FK_InstitutionMatch_Composit" />
+        <AssociationConnector Association="NBT_ProductionModel.FK_InstitutionMatch_Institution" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

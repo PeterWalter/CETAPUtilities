@@ -11,5 +11,7 @@ namespace CETAPUtilities.Model
    public interface ICompositeService
     {
         Task<ObservableCollection<CompositBDO>> GetAllNBTScoresAsync(IntakeYearsBDO period);
-    }
+		Task<ObservableCollection<InstitutionBDO>> GetAllInstitutions();
+
+	}
 }

@@ -45,5 +45,7 @@ namespace CETAPUtilities.Database
         public virtual DbSet<Batch> Batches { get; set; }
         public virtual DbSet<Composit> Composits { get; set; }
         public virtual DbSet<Province> Provinces { get; set; }
+        public virtual DbSet<Institution> Institutions { get; set; }
+        public virtual DbSet<InstitutionMatch> InstitutionMatches { get; set; }
     }
 }
