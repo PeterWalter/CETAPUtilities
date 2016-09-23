@@ -16,10 +16,10 @@ namespace CETAPUtilities.ViewModel
 		/// <summary>
 		/// Initializes a new instance of the InstitutionSelectPageViewModel class.
 		/// </summary>
-		public InstitutionSelectPageViewModel(InstitutionMatch institutionMatch,ICompositeService CompositeService)
+		public InstitutionSelectPageViewModel(InstitutionMatch institutionMatch,ICompositeService Service)
 			:base(institutionMatch)
 			{
-				_service = CompositeService;
+				_service = Service;
 			}
 
 		public override string DisplayName

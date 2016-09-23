@@ -219,6 +219,7 @@
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\SubDomainsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="ViewModel\WelcomePageViewModel.cs" />
     <Compile Include="View\CompositeGenerationView.xaml.cs">
       <DependentUpon>CompositeGenerationView.xaml</DependentUpon>
     </Compile>

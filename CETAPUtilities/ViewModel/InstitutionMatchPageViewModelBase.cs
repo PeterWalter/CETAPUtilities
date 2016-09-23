@@ -1,5 +1,6 @@
 ﻿using CETAPUtilities.Model;
 using GalaSoft.MvvmLight;
+using System.ComponentModel;
 
 namespace CETAPUtilities.ViewModel
 	{
